@@ -12,8 +12,11 @@
             
             d3.select("body").selectAll("p")
                 .data(dataset)
+                //we've instructed it to select all the paragraphs, data(dataset) says ones for each of the 5 values in our array. however, the paragraphs don't exist yet! enter() creates a place holder for those elements for values where they don't yet exist!
                 .enter()
+                //appends a paragraph to those place holders then passes it on to get the content from the next step down the chain...
                 .append("p")
+                //takes reference to the newly created p tags and inserts text!
                 .text("New paragraph!");
             
         </script>
