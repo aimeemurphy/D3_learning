@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Page Template</title>
+        <script type="text/javascript" src="d3/d3.v3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+        //this next line automatically generates a parage tag! inspet the webpage to see this!
+        //passes this CSS style to the next method - append
+        d3.select("body")
+        //appends an element, this element is an empty paragraph, and it is appended to the body
+            .append("p")
+            //text() inserts the string between the opening and closing tags of the current reference - this is passed down from above so goes into the <p> tags of append!
+            .text("New paragraph!");
+
+            //the above is a neater way of writing
+            //var body = d3.select("body");
+            //var p = body.append("p");
+            //p.text("New paragraph!");
+
+        //loading a csv
+
+        //creates an anonymous function called data that executes only after the csv has loaded
+        //d3.csv("food.csv", function(data) {
+            //loads the data onto the console for us to view in the chrome developer tools
+            //console.log(data);
+            //loads the data into a global variable, then call other functions that require the data
+        var dataset;
+        d3.csv("food.csv", function(error, data) {
+
+        if (error) {  //If error is not null, something went wrong.
+          console.log(error);  //Log the error.
+        } else {      //If no error, the file loaded correctly. Yay!
+          console.log(data);   //Log the data.
+
+      //Include other code to execute after successful file load here
+            dataset = data;
+            generateVis();
+            hideLoadingMsg();
+        }
+        });
+            // Your beautiful D3 code will go here
+        </script>
+    </body>
+</html>
